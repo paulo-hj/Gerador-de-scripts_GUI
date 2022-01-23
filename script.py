@@ -12,17 +12,18 @@ class Func():
             for i in self.lista:
                 os.startfile(i)
         except:
-            messagebox.showerror(title="Erro", message="Informe somente sites.")
+            messagebox.showerror(title="Erro", message="Informe somente programas e sites.")
     def listar(self):
         cont = 0
         for i in self.lista:
             cont +=1
-        self.lb_2["text"] = "Total de: {} - {}".format(cont, self.lista)
-  
+            self.lb_3["text"] = "Total de: {}".format(cont)
+        self.lb_2["text"] = "{}".format (self.lista)
+
 class Aplicativo(Func):
     def __init__(self):
         root = Tk()
-        root.geometry("260x170+547+200")
+        root.geometry("260x170+547+250")
         root.title("Gerar script")
         self.lista = []
         self.root = root
@@ -33,9 +34,11 @@ class Aplicativo(Func):
         self.entrada_1 = Entry(self.root)
         self.entrada_1.pack()
         self.btn_add_script = Button(self.root, text="Add ao script", command=self.add).pack()
+        self.bnt_listar = Button(self.root, text="Listar adicionados", command=self.listar).pack()
         self.lb_2 = Label(self.root, text="")
         self.lb_2.pack()
-        self.bnt_listar = Button(self.root, text="Listar adicionados", command=self.listar).pack()
+        self.lb_3 = Label(self.root, text="")
+        self.lb_3.pack()
         self.btn_rodar_script = Button(self.root, text="Rodar script", command=self.rodar_script).pack()
         
 Aplicativo()
